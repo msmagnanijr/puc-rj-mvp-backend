@@ -167,14 +167,6 @@ subject_controller = SubjectController()
 
 @app.route('/subjects', methods=['GET', 'POST'])
 def subjects():
-    """
-    GET: Retrieves all the subjects from the database and returns them as a JSON object.
-    POST: Adds a new subject to the database using the information from the POST request's body.
-
-    Returns:
-    --------
-        A JSON object with either the status and a list of subjects, or the status and a success message.
-    """
     if request.method == 'GET':
         return jsonify({'status': 'success', 'subjects': subject_controller.get_all_subjects()})
     elif request.method == 'POST':
@@ -185,17 +177,6 @@ def subjects():
 
 @app.route('/subjects/<subject_id>', methods=['PUT', 'DELETE'])
 def subject(subject_id):
-    """
-    This function handles the HTTP PUT and DELETE requests for a specific subject.
-
-    Parameters:
-    -----------
-        subject_id (str): The ID of the subject to update or delete.
-
-    Returns:
-    --------
-        A JSON response indicating the status of the request and, in some cases, a message.
-    """
     if request.method == 'PUT':
         data = request.get_json()
         subject_controller.update_subject(subject_id, data['name'], data['teacher'], data['inprogress'], data['description'])

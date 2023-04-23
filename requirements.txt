@@ -1,0 +1,13 @@
+click
+Flask
+Flask-Cors
+itsdangerous
+Jinja2
+MarkupSafe
+six
+Werkzeug
+flasgger
+pycodestyle
+openai
+psycopg2
+SQLAlchemy

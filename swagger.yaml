@@ -1,0 +1,112 @@
+swagger: '2.0'
+info:
+  title: 'API Disciplinas'
+  description: 'API para gerenciamento de disciplinas'
+  version: '1.0'
+schemes:
+  - 'http'
+paths:
+  /subjects:
+    get:
+      description: Retorna todas as disciplinas
+      responses:
+        200:
+          description: OK
+          schema:
+            type: object
+            properties:
+              status:
+                type: string
+              subjects:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                    name:
+                      type: string
+                    teacher:
+                      type: string
+                    inprogress:
+                      type: boolean
+                    description:
+                      type: string
+    post:
+      description: Adiciona uma nova disciplina
+      parameters:
+        - name: name
+          in: body
+          description: Nome da disciplina
+          required: true
+          schema:
+            type: object
+            properties:
+              name:
+                type: string
+              teacher:
+                type: string
+              inprogress:
+                type: boolean
+              description:
+                type: string
+      responses:
+        200:
+          description: OK
+          schema:
+            type: object
+            properties:
+              status:
+                type: string
+              message:
+                type: string
+  /subjects/{subject_id}:
+    put:
+      description: Atualiza uma disciplina existente
+      parameters:
+        - name: subject_id
+          in: path
+          description: ID da disciplina
+          required: true
+        - name: name
+          in: body
+          description: Nome da disciplina
+          required: true
+          schema:
+            type: object
+            properties:
+              name:
+                type: string
+              teacher:
+                type: string
+              inprogress:
+                type: boolean
+              description:
+                type: string
+      responses:
+        200:
+          description: OK
+          schema:
+            type: object
+            properties:
+              status:
+                type: string
+              message:
+                type: string
+    delete:
+      description: Remove uma disciplina existente
+      parameters:
+        - name: subject_id
+          in: path
+          description: ID da disciplina
+          required: true
+      responses:
+        200:
+          description: OK
+          schema:
+            type: object
+            properties:
+              status:
+                type: string
+              message:
+                type: string
